@@ -1,0 +1,16 @@
+version: "2.1"
+services:
+  calibre-web:
+    image: lscr.io/linuxserver/calibre-web:latest
+    container_name: calibre-web
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+      - DOCKER_MODS=linuxserver/mods:universal-calibre
+    volumes:
+     - /home/user/Docker/calibreweb/config:/config
+     - /home/user/Docker/calibreweb/books:/books
+    ports:
+      - 8083:8083
+    restart: unless-stopped
